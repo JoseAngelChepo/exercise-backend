@@ -7,6 +7,7 @@ import {
   sendChatMessage,
   getSSEStats 
 } from '../controllers/sseController.js';
+import openAiServices from '../utils/openAiService.js';
 
 const router = express.Router();
 
@@ -175,6 +176,11 @@ router.post('/simulate-event', (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+});
+
+router.post('/agent-chat', (req, res) => {
+  const { messages } = req.body;
+  openAiServices.streamChat(messages, res);
 });
 
 // Ruta para obtener información de endpoints SSE

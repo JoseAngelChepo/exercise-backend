@@ -6,7 +6,7 @@ import axios from 'axios';
 import https from 'https';
 dotenv.config();
 
-const generateToken = id => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '15m' });
+const generateToken = id => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '24h' });
 const generateRefreshToken = id => jwt.sign({ id }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
 let refreshTokens = [];
